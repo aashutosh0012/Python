@@ -27,7 +27,7 @@ pip install pyshorteners
 
 from pyshorteners import Shortener 
 long_url = 'http://www.google.com'
-API='AIzaSyCQWWnHfx0S6JVuzs5r98QdoPS0lCO3nYI'
+API='<API_KEY>'
 url_shortener = Shortener('Google', api_key = API) 
 print ("Short URL is {}".format(url_shortener.short(long_url))) 
 
