@@ -1,0 +1,42 @@
+Bitly_api
+---------
+
+Bitly->Profile Settings -> Settings -> Generate Access Token
+
+cd bitly-api-python-master
+python setup.py install
+
+import bitly_api
+ACCESS_TOKEN="3556421f9d072d260c4ee02b6bc75ebe37f68635"
+b = bitly_api.Connection(access_token = ACCESS_TOKEN) 
+response = b.shorten('http://google.com/') 
+print(response) 
+
+
+url='https://www.geeksforgeeks.org/url-shorteners-and-its-api-in-python-set-1/'
+ACCESS_TOKEN="3556421f9d072d260c4ee02b6bc75ebe37f68635"
+b = bitly_api.Connection(access_token = ACCESS_TOKEN) 
+response = b.shorten(url) 
+print(response) 
+
+
+Using Google URL Shortener
+--------------------------
+
+pip install pyshorteners
+
+from pyshorteners import Shortener 
+long_url = 'http://www.google.com'
+API='AIzaSyCQWWnHfx0S6JVuzs5r98QdoPS0lCO3nYI'
+url_shortener = Shortener('Google', api_key = API) 
+print ("Short URL is {}".format(url_shortener.short(long_url))) 
+
+import requests
+import json
+
+def goo_shorten_url(url):
+    post_url = 'https://www.googleapis.com/urlshortener/v1/url'
+    payload = {'longUrl': url}
+    headers = {'content-type': 'application/json'}
+    r = requests.post(post_url, data=json.dumps(payload), headers=headers)
+    print(r.text)
