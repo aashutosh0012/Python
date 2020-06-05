@@ -1,7 +1,0 @@
-import time
-c=1
-lap0=time.time()
-while True:
-    i=input()
-    print(f"Lap {c} time = {time.time()-lap0}")
-    c+=1
