@@ -7,14 +7,14 @@ cd bitly-api-python-master
 python setup.py install
 
 import bitly_api
-ACCESS_TOKEN="3556421f9d072d260c4ee02b6bc75ebe37f68635"
+ACCESS_TOKEN="<API_KEY>"
 b = bitly_api.Connection(access_token = ACCESS_TOKEN) 
 response = b.shorten('http://google.com/') 
 print(response) 
 
 
 url='https://www.geeksforgeeks.org/url-shorteners-and-its-api-in-python-set-1/'
-ACCESS_TOKEN="3556421f9d072d260c4ee02b6bc75ebe37f68635"
+ACCESS_TOKEN="<API_KEY>"
 b = bitly_api.Connection(access_token = ACCESS_TOKEN) 
 response = b.shorten(url) 
 print(response) 
