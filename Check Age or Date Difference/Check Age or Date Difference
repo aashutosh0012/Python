@@ -1,0 +1,35 @@
+def age():
+    import datetime
+    TOD = datetime.datetime.now()
+    try:
+        DOB = input('Enter Your Date of Birth or any Date to Calculate Difference in format (DD/MM/YYYY): ')
+        _DOB = datetime.datetime.strptime(DOB,'%d/%m/%Y')
+        days_total = abs(_DOB-TOD)
+        years = days_total.total_seconds()/(365.242*24*60*60)
+        years_int = int(days_total.total_seconds()/(365.242*24*60*60))
+        months = (years-years_int)*12
+        months_int = int((years-years_int)*12)
+        days = (months-months_int)*(365.242/12)
+        days_int = int(days)
+        hours = (days-days_int)*24
+        hours_int = int(hours)
+        minutes = (hours-hours_int)*60
+        minutes_int = int(minutes)
+        seconds  =  (minutes-minutes_int)*60
+        seconds_int  = int(seconds)
+        print("\n\tDate of Birth: %s\n \tAge: \t\t%s Year\n \t\t\t%s Months\n \t\t\t%s Days\n \t\t\t%s Hours\n \t\t\t%s Minutes\n \t\t\t%s Seconds" %(DOB,years_int,months_int,days_int,hours_int,minutes_int,seconds_int))
+        print("\tTotal Years:\t\t\t" + '{:,}'.format(round(years,2)))
+        print("\tTotal Months:\t\t\t" + '{:,}'.format(round(years*12,2)))
+        print("\tTotal Days:\t\t\t" + '{:,}'.format(days_total.days))
+        print("\tTotal Hours:\t\t\t" + '{:,}'.format(round(days_total.total_seconds()/60/60)))
+        print("\tTotal Minutes_int:\t\t" + '{:,}'.format(round(days_total.total_seconds()/60)))
+        print("\tTotal Seconds_int:\t\t" + '{:,}'.format(round(days_total.total_seconds())))
+        response = input("\n\tPress 1 to run again\n\tPress any other key to exit\n")
+        if response == str(1):
+            age()
+    except ValueError:
+        print("Wrong Date Format")
+        print("Enter Date in Correct Format like DD/MM/YYYY, Example: 25/09/1993")
+        age()
+
+age()
