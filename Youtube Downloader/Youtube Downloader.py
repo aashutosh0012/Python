@@ -16,7 +16,7 @@ window.title('Youtube Downloader')
 window.geometry('400x600+100+100')
 url = StringVar()
 def get_data():
-    global yt,res,title,video_url,url
+    global yt,res,title,video_url,url,resolutions
     video_url = url.get() 
     yt = YouTube(video_url)
     title = yt.title
@@ -48,15 +48,17 @@ def get_data():
     resolutions.current(0)
     resolutions.grid(row = 5,column = 1)
     res = resolutions.get()
-    print(f"resolution = {res} title = {title}") 
+    #print(f"resolution = {res} title = {title}") 
     
     #Display Download Button
     download_btn = Button(window,text="Download Video",bd=5, relief='ridge', bg = 'violet', fg='Black', command = download).grid(row = 6, column = 0,columnspan = 2,pady = 3)
 
 def download():
     download_label = Label(window,text = 'Downloading...',bd = 5).grid(row = 6,column = 0, columnspan=2,pady = 3)
-    global yt,res,title
-    
+    global yt,res,title,resolutions
+    res = resolutions.get()
+    #print(res)
+
     #Download Video in mp4 Format and Selected Resolution
     video = yt.streams.filter(file_extension = 'mp4',progressive = True,res = res)[0]
     video.download()
